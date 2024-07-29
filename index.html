@@ -157,22 +157,22 @@
     </div>
     <div  class="all-wrapper">
       <div class="question-wrapper">
-        <img src="FB_IMG_16886826129753649.jpg" class="home-page-pic">
+        <p class="physics-text"></p>
       </div>
 
-      <a href="/work-projects/physics-definitions.html">
+      <a href="/physics-definitions.html">
         <div class="question-wrapper">
           <p class="question-text">Learn more</p>
         </div>
       </a>
 
-      <a href="/work-projects/physics-test.html">
+      <a href="/physics-test.html">
         <div class="question-wrapper">
           <p class="question-text">Test yourself</p>
         </div>
       </a>
 
-      <a href="/work-projects/physics-contact.html">
+      <a href="/physics-contact.html">
         <div class="question-wrapper">
           <p class="question-text">Contact me!</p>
         </div>
@@ -181,7 +181,13 @@
     </div>
     <script>
       const questionText = document.querySelector('.question-text');
+      const physicsText = document.querySelector('.physics-text');
 
+      const physicsFathers = ["<img src="einstein again.jpeg" class="home-page-pic">", "<img src="einstein.jpeg" class="home-page-pic">", "<img src="galileo again.jpg" class="home-page-pic">", "<img src="galileo.webp" class="home-page-pic">", "<img src="isaac newton.jpeg" class="home-page-pic">"];
+
+      const randomNumber = Math.floor(Math.random() * physicsFathers.length);
+
+      physicsText.innerHTML = physicsFathers[randomNumber];
     </script>
   </body>
 </html>
