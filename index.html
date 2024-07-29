@@ -122,11 +122,11 @@
         display: flex;
         flex-direction: column;
         width: 98%;
-        margin-top: 400px;
+        margin-top: 600px;
       }
       .home-page-pic{
-        width: 40%;
-        border-radius: 80%;
+        width: 60%;
+        border-radius: 6px;
       }
       .myself-wrapper{
         display: grid;
@@ -149,6 +149,10 @@
         font-weight: bold;
         color: white;
       }
+      .physics-text{
+        align-items: center;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
@@ -160,19 +164,19 @@
         <p class="physics-text"></p>
       </div>
 
-      <a href="/physics-definitions.html">
+      <a href="https://inuni4.github.io/physics-definitions/physics-definitions.html">
         <div class="question-wrapper">
           <p class="question-text">Learn more</p>
         </div>
       </a>
 
-      <a href="/physics-test.html">
+      <a href="https://inuni4.github.io/physics-definitions/physics-test.html">
         <div class="question-wrapper">
           <p class="question-text">Test yourself</p>
         </div>
       </a>
 
-      <a href="/physics-contact.html">
+      <a href="https://inuni4.github.io/physics-definitions//physics-contact.html">
         <div class="question-wrapper">
           <p class="question-text">Contact me!</p>
         </div>
@@ -183,11 +187,11 @@
       const questionText = document.querySelector('.question-text');
       const physicsText = document.querySelector('.physics-text');
 
-      const physicsFathers = ["<img src="einstein again.jpeg" class="home-page-pic">", "<img src="galileo again.jpg" class="home-page-pic">", "<img src="galileo.webp" class="home-page-pic">", "<img src="isaac newton.jpeg" class="home-page-pic">"];
+      const physicsFathers = [`<img src="einstein again.jpeg" class="home-page-pic">`, `<img src="einstein.jpeg" class="home-page-pic">`,`<img src="galileo again.jpg" class="home-page-pic">`, `<img src="galileo.webp" class="home-page-pic">`, `<img src="isaac newton.jpeg" class="home-page-pic">`];
 
       const randomNumber = Math.floor(Math.random() * physicsFathers.length);
 
-      physicsText.innerHTML = `physicsFathers[randomNumber]`;
+      physicsText.innerHTML = `${physicsFathers[randomNumber]}`;
     </script>
   </body>
 </html>
