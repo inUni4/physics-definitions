@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width-device-width, initial-scale=1.0" />
+    <style>
+      body{
+        font-family: Arial;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: bisque;
+        height: 100vh;
+      }
+      .fact-wrapper{
+        background-color: white;
+        width: 90%;
+        margin-top: 300px;
+        border-radius: 6px;
+        border: 2px solid bisque;
+        padding: 12px;
+        display: grid;
+        grid-template-columns: 60% 40%;
+        justify-content: center;
+        align-items: center;
+        transition: all ease 0.3s;
+      }
+
+      .fact-wrapper1{
+        background-color: white;
+        position: absolute;
+        width: 80%;
+        max-height: 500px;
+        border-radius: 6px;
+        border: 2px solid bisque;
+        padding: 12px;
+        display: grid;
+        grid-template-columns: 35% 45% 20%;
+        justify-content: center;
+        align-items: center;
+        transition: all ease 0.3s;
+        overflow-y: scroll;
+      }
+      .fact-wrapper2{
+        background-color: white;
+        position: fixed;
+        width: 90%;
+        max-height: 500px;
+        border-radius: 6px;
+        border: 2px solid bisque;
+        padding: 12px;
+        display: grid;
+        grid-template-columns: 30% 45% 25%;
+        justify-content: center;
+        align-items: center;
+        transition: all ease 0.3s;
+        overflow-y: scroll;
+      }
+      .fact-container{
+        color: white;
+        border: 1px solid bisque;
+        border-radius: 6px;
+        margin: 4px;
+        margin-right: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 6px;
+        transition: all ease 0.3s;
+      }
+      .save-btn{
+        background-color: bisque;
+        width: 80%;
+        padding: 12px;
+        border: none;
+        margin-left: 16px;
+        border-radius: 6px;
+        font-weight: bold;
+        font-size: 14px;
+        color: white;
+        cursor: pointer;
+        transition: all ease 0.3s;
+      }
+      .save-btn:active{
+        transform: scale(0.9);
+      }
+      .saved-definitions{
+        font-size: 12px;
+        font-weight: 500;
+      }
+      .next-btn{
+        background-color: bisque;
+        width: 80%;
+        padding: 6px;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        font-size: 14px;
+        color: white;
+        cursor: pointer;
+        margin-bottom: 6px;
+        transition: all ease 0.3s;
+      }
+      .next-btn:active{
+        transform: scale(0.9);
+      }
+
+      .example-btn{
+        background-color: bisque;
+        width: 80%;
+        padding: 6px;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        font-size: 14px;
+        color: white;
+        cursor: pointer;
+        margin-bottom: 6px;
+        transition: all ease 0.3s;
+      }
+      .example-btn:active{
+        transform: scale(0.9);
+      }
+      .example-text{
+        font-size: 10px;
+        font-weight: 500;
+      }
+      .inventory-btn{
+        background-color: bisque;
+        width: 98%;
+        padding: 6px;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        font-size: 12px;
+        color: white;
+        cursor: pointer;
+        margin-bottom: 6px;
+        transition: all ease 0.3s;
+      }
+      .inventory-btn:active{
+        transform: scale(0.9);
+      }
+      .remove-btn{
+        background-color: rgb(255, 202, 136);
+        width: 98%;
+        padding: 6px;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        font-size: 12px;
+        color: white;
+        padding: 6px;
+        cursor: pointer;
+        margin-bottom: 6px;
+        transition: all ease 0.3s;
+      }
+      .clear-btn{
+        background-color: rgb(255, 202, 136);
+        width: 98%;
+        padding: 6px;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        font-size: 12px;
+        color: white;
+        cursor: pointer;
+        margin-bottom: 6px;
+        transition: all ease 0.3s;
+      }
+      .restart-btn{
+        background-color: rgb(255, 202, 136);
+        width: 98%;
+        padding: 6px;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        font-size: 12px;
+        color: white;
+        cursor: pointer;
+        margin-bottom: 6px;
+        transition: all ease 0.3s;
+      }
+      .delete-btn{
+        background-color: rgb(215, 0, 0);
+        width: 80%;
+        padding: 6px;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        font-size: 12px;
+        color: white;
+        cursor: pointer;
+        margin-bottom: 6px;
+        transition: all ease 0.3s;
+      }
+      .fact-text{
+        font-size: 14px;
+        font-weight: 500;
+        color: rgb(255, 202, 136);
+        text-align: center;
+        width: 80%;
+      }
+      .hide{
+        opacity: 0;
+        pointer-events: none;
+      }
+      .definitions{
+        color: rgb(255, 202, 136);
+        font-size: 12px;
+        font-weight: bold;
+        margin: 8px;
+      }
+      .header-wrapper{
+        width: 100%;
+        box-sizing: border-box;
+        height: 60px;
+        background-color: white;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: grid;
+        grid-template-columns: 70% 30%;
+        align-items: center;
+        justify-content: space-around;
+        z-index: 1;
+      }
+      .header-text{
+        font-size: 16px;
+        font-weight: bold;
+        color: bisque;
+        text-align: center;
+      }
+      li{
+        margin: 6px;
+        color: bisque;
+        font-size: 16px;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <p class="header-text">Physics Definitions</p>
+      <button class="inventory-btn">Inventory</button>
+    </div>
+    <div class="fact-wrapper">
+      <div class="fact-container">
+        <p class="fact-text">Welcome</p>
+        <button class="next-btn">next</button>
+        <button class="example-btn">example</button>
+      </div>
+      <div class="save-container">
+        <button class="save-btn">save</button>
+      </div>
+    </div>
+
+    <div class="fact-wrapper1">
+      <p class="definitions">Saved Definitions</p>
+      <p class="saved-definitions"></p>
+      <div>
+        <button class="remove-btn">remove</button>
+        <button class="restart-btn">restart</button>
+      </div>
+    </div>
+    <div class="fact-wrapper2">
+      <p class="definitions">Example</p>
+      <p class="example-text"></p>
+      <div>
+        <button class="clear-btn">remove</button>
+      </div>
+    </div>
+    <script>
+      const factText = document.querySelector('.fact-text');
+      const nextBtn = document.querySelector('.next-btn');
+      const saveBtn = document.querySelector('.save-btn');
+      const savedDefinitions = document.querySelector('.saved-definitions');
+      const factWrapper = document.querySelector('.fact-wrapper');
+      const factWrapper1 = document.querySelector('.fact-wrapper1');
+      const factWrapper2 = document.querySelector('.fact-wrapper2');
+      const inventoryBtn = document.querySelector('.inventory-btn');
+      const removeBtn = document.querySelector('.remove-btn');
+      const clearBtn = document.querySelector('.clear-btn');
+      const restartBtn = document.querySelector('.restart-btn');
+      const exampleBtn = document.querySelector('.example-btn');
+      const exampleText = document.querySelector('.example-text');
+
+      const facts = ["A physical quantity that has both magnitude and direction is a vector", "A quantity that has magnitude only is a scalar quantity", "The resultant vector is the single vector which has the same affect as the original vectors acting together.", "Distance is the length of path travelled", "Displacement is a change in position.", "Speed is the rate of change of distance", "Velocity is the rate of change of position or rate of displacement.", "Acceleration is the rate of change of velocity.", "Inertia is the property of an object that causes it to resist a change in its state of rest or uniform motion.", "Weight is the gravitational force the earth exerts on any object on or near its surface.", "Normal Force is the perpendicular force exerted by a surface on an object with which it is in contact.", "Frictional force due to a surface is the force that opposes the motion of an object and acts parallel to the surface with which the object is in contact.", "Static frictional force is the force that opposes the tendancy of motion of a stationary object relative to a surface.", "Kinetic frictional force is the force that opposes the motion of a moving object relative to a surface.", "Momentum is the product of the mass and velocity of the object.", "The law of conservation of linear momentum is the total linear momentum of an isolated system remains constant (is conserved)", "Impulse is the product of the resultant/net force acting on an object and the time for which the resultant/net force acts on the object.", "An elastic collision is a collision in which both momentum and Kinetic energy are conserved.", "An inelastic collision is a collision in which only momentum is conserved.", "Newton's first law of motion is when an object continues in a state of rest or uniform velocity (moving with constant velocity) unless it is acted upon by a (non-zero) net or resultant force.", "Newton's second law of motion is when a resultant/net force, is applied to an object of mass, m, it accelerates in the direction of the net force. The acceleration, a, is directly proportional to the net force and inversely proportional to the mass.", "Newton's second law in terms of momentum is when the resultant/net force acting on an object is equal to the rate of change of momentum of the object in the direction of the resultant/net force.", "Newton's third law is when object A exerts a force on object B, object B simultaneously exerts and oppositely directed force of equal magnitude on object A.", "Newton's Law of Universal Gravitation is when every particle in the universe attracts every other particle with a force which is directly proportional to the product of their masses and inversely proportional to the square of the distance between their centres.", "The work done on an object by a force is the product of the displacement and the component of the force parallel to the displacement.", "Work-Energy Theorem is the work done by a resultant/net force on an object is equal to the change in the kinetic energy of the object.", "A conservative force is a force for which the work done in moving an object between two points is independent of the path taken.", "A non-conservative force is a force for which the work done in moving an object between two points depends on the path taken.", "Gravitational potential energy is the energy an object possesses due to its position relative to a reference point.", "Kinetic energy is the energy an object has as a result of the object's motion.", "Mechanical energy is the sum of gravitational potential energy and Kinetic energy at a point.", "Conservation of energy is when the total energy in a system cannot be created nor destroyed; only transferred from one form to another.", "Conservation of mechanical energy is when in the absence of air resistance or any external forces, the mechanical energy of an object is constant.", "Power is the rate at which work is done or the rate at which energy is transferred.", "Efficiency is the ratio of output power to input power.", "The Doppler effect is the change in frequency (or pitch) of the sound detected by a listener because the sound source and the listener have different velocities relative to the medium of sound propagation.", "Coulomb's law is when the force between two charges is directly proportional to the product of the charges and inversely proportional to the distance between the charges squared.", "An electric field is a region of space in which an electric charge will experience a force. The direction of the electric field is the direction that a positive test charge would move if placed at that point.", "Potential difference is the work done per unit positive charge.", "Emf is the total energy supplied per coulomb of charge by the cell.", "Current is the rate of flow of charge.", "Resistance is a material's opposition to the flow of electric current.", "Ohm's Law is when the current through a conductor is directly proportional to the potential difference across the conductor at constant temperature.", "The rms value for alternating voltage/current is when the rms value of AC is the DC potential difference/current which dissipates the same amount of energy as AC.", "A diode is a component that only allows current to flow in one direction.", "Magnetic flux linkage is the product of the number of turns on the coil and the flux through the coil.", "Faraday's law of electromagentic induction: The emf induced is directly proportional to the rate of change of magnetic flux (flux linkage).", "Lenz's Law: The induced current flows in a direction so as to set up a magnetic field to oppose the change in magnetic flux.", "The photoelectric effect is the process that occurs when light shines on a metal and elctrons are ejected.", "Threshold frequency is the minimum frequency of incident radiation at which electrons will be emitted from a particular metal.", "Work function is the minimum amount of energy needed to emit an electron from the surface of a metal.", "An atomic emission spectrum is formed when certain frequencies of electromagnetic radiation are emitted due to an atom's electrons making a transition from a high-energy state to a lower energy state.", "Molar mass is the mass in grams of one mole of that substance.", "A solute is the substance that is dissolved in the solution.", "A solvent is the substance in which another substance is dissolved, forming a solution.", "Concentration is the number of moles of solute per unit volume of solution.", "A standard volume solution is a solution of known concentration.", "Electronegativity is a measure of the tendency of an atom to attract a bonding pair of electrons.", "A covalent bond is the sharing of atleast one pair of electrons by two atoms.", "A non-polar covalent bond is an equal sharing of electrons.", "A polar covalent bond is unequal sharing of electrons leading to a dipole forming.", "An ionic bond is the transfer of electrons and subsequent electrostatic attraction.", "Metallic bonding is between a positive kernel and a sea of delocalised electrons.", "An intramolecular bond is the bond occuring between atoms within molecules.", "An intermolecular force is a weak force of attraction between molucules or between atoms of noble gases.", "Dipole-dipole forces are forces between two polar molecules.", "Induced dipole forces or London forces are forces between non-polar molecules.", "Hydrogen bonding are forces between molecules in which hydrogen is covalently bonded to nitrogen, oxygen or flourine.", "Boiling point is the temperature at which the vapour pressure of a substance equals the atmospheric pressure.", "Melting point is the temperature at which the solid and the liquid phases of a substance are at equilibrium.", "Vapour pressure is the pressure exerted by a vapour at equilibrium with its liquid in a closed system.", "Organic molecules are molecules containing carbon atoms.", "A hydrocarbon is a compound containing only carbon and hydrogen atoms.", "An homologous series is a series of similar compounds which have the same functional group and have the same general formula, in which each member differs from the previous one by a single CH2 unit.", "Structural isomers are compunds having the same molecular formula but different structural formulae.", "A functional group is an atom or a group of atoms that form the centre of chemical activity in the molecule.", "A saturated compund is a compound in which all of the bonds between carbon atoms are single bonds.", "An unsaturated compund is a compund in which there is at least one double and/or triple bond between carbon atoms.", "Macromolecule is a molecule that consists of a large number of atoms.", "Monomers are small organic molecules that can be covalently bonded together in a repeating pattern.", "A polymer is a large molecule composed of smaller monomer units covalently bonded in a repeating pattern.", "Polymerisation is a chemical reaction in which monomer molecules join to form a polymer.", "Addition polymer is a polymer formed when monomers (usually containing a double bond) combine through an addition reaction.", "Condensation polymer is a polymer formed by two monomers with different functional groups that link together in a condensation reaction in which a small molecule usually water, is lost.", "The heat of reaction is the net change of chemical potential energy of the system.", "Exothermic reactions are reactions which transfer potential energy into thermal energy.", "Endothermic reactions are reactions which transfer thermal energy into potential energy.", "Reaction rate is the change in concentration per unit time of either a reactant or product .", "Activation energy is the minimum energy required to start a chemical reaction.", "The activated complex is an unstable transition state between the reactants and the products." , "A catalyst is a substance that increases the rate of the reaction but remains unchanged at the end of the reaction.", "Yield is a measure of the extent of a reaction, generally measured by comparing the amount of product against the amount of product that is possible.", "Le Chatelier's principle is 'When an external stress (change in pressure, temperature or concentration) is applied to a system in chemical equilibrium, the equilibrium point will changein such a way as to counteract the stress'.", "An open system is a system that continually interacts with its surroundings ", "A closed systems is isolated from its surroundings.", "Chemical equilibrium is a dynamic equilibrium when the rate of the forward reaction is equal to the rate of the reverse reaction.", "Arrhenius theory: An acid is a substance that produces hydrogen ions/hydronium ions when it dissolves in water.", "Arrhenius theory: A base is a substance that produces hydroxide ions when it dissolves in water.", "Lowry-Bronsted theory: An acid is a proton donor.", "Lowry-Bronsted theory: A base is a proton acceptor.", "A strong acid is an acid that ionises almost completely in an aqueous solution.", "A strong base is a base that dissociates almost completely in an aqueous solution.", "A weak acid is an acid that only ionises partially in an aqueous solution.", "A weak base is a base that only dissociates partially in an aqueous solution.", "A salt is a substance in which the hydrogen of an acid has been replaced by a cation.", "Neutralisation is the point where an acid and base have reacted so neither is in excess.", "Hydrolysis of a salt is a reaction with water where water itself is decomposed.", "Concentrated acids/bases contain a large amount (number of moles) of acid/base in proportion to the volume of water.", "Dilute acids/bases contain a small amount (numer of moles) of acids/bases in proportion to the volume of water.", "Kw is the equilibrium constant for the ionization of water, or the ionic product of water or the ionization constant of water.", "The equivalence point of a titration is the point at which the acid has completely reacted with the base.", "The end point of a titration is the point where the indicator changes colour.", "Hydrolysis is a reaction where a salt reacts with water.", "Oxidation is the loss of electrons.", "Reduction is the gain of electrons.", "An oxidising agent is a substance that accepts electrons.", "A reducing agent is a substance that donates electrons.", "An anode is the electrode where oxidation takes place.", "A cathode is the electrode where reduction takes place.", "A Galvanic cell is a cell in which chemical energy is converted into electrical energy.", "An Electrolytic cell is a cell in which electrical energy is converted into chemical energy.", "An Electrolyte is a solution/liquid/dissolved substance that conducts electricity through the movement ions.", "Electrolysis is the chemical process in which electrical energy is converted to chemical energy or the use of electrical energy to produce a chemical change.", "Eutrophication is the process by which an ecosystem e.g. a river or a dam, becomes enriched with inorganic plant nutrients resulting in excessive plant growth."];
+
+      let savedFacts = JSON.parse(localStorage.getItem('savedFacts')) || [];
+      var randomNumber = Math.floor(Math.random() * facts.length);
+
+      nextBtn.addEventListener('click', () => {
+        randomNumber = Math.floor(Math.random() * facts.length);
+        factText.textContent = facts[randomNumber];
+      });
+
+      saveBtn.addEventListener('click', () => {
+        savedFacts.push(facts[randomNumber]);
+        localStorage.setItem('savedFacts', JSON.stringify(savedFacts));
+        
+      });
+
+      inventoryBtn.addEventListener('click', () => {
+        factWrapper.classList.add('hide');
+        factWrapper1.classList.remove('hide');
+        
+        if(savedFacts == ""){
+          savedDefinitions.textContent = "No data currently saved."
+        } else {
+            savedDefinitions.textContent = "";
+            for(let i = 0; i < savedFacts.length; i++) {
+              savedDefinitions.innerHTML += `<li>${savedFacts[i]}</li>`;
+            }
+          }
+      });
+
+      restartBtn.addEventListener('click', () => {
+        localStorage.clear();
+        savedFacts = [];
+        for(let i = 0; i < savedFacts.length; i++) {
+          savedDefinitions.innerHTML += `<li>${savedFacts[i]}</li>`;
+        }
+      });
+
+      exampleBtn.addEventListener('click', () => {
+        factWrapper.classList.add('hide');
+        factWrapper2.classList.remove('hide');
+
+        if(factText.textContent == "Inertia is the property of an object that causes it to resist a change in its state of rest or uniform motion."){
+          exampleText.innerHTML = "<li>Imagine someone tells you that another person is flirting with your partner and you run to go see if it's true and when you get there you try to stop but since you can't stop fast enough you bump into someone and you fall, then your partner sees you and you get embarrassed, but the question is why didn't you stop in time ? well it's simple because your body was resisting change and that is inertia.</li>";
+        } else if(factText.textContent == "Newton's third law is when object A exerts a force on object B, object B simultaneously exerts and oppositely directed force of equal magnitude on object A.") {
+            exampleText.innerHTML = "<li>Did you know that whether you are lying down, sitting down, standing up or riding a skateboard, you are exerting a force on to the earth and guess what? The earth also exerts the same force but in the opposite direction and that is Newton's third law.</li>"; 
+        } else if(factText.textContent == "Newton's second law of motion is when a resultant/net force, is applied to an object of mass, m, it accelerates in the direction of the net force. The acceleration, a, is directly proportional to the net force and inversely proportional to the mass.") {
+          exampleText.innerHTML = `<li>Imagine you are having sex, you don't have a lot of experience and you're attempting the doggystyle position but on the first go after inserting your "manhood" in to the girl's "garden" you start enjoying it so you go faster up to the point where you're just slamming it in and she keeps on going forward and back uncontrollably but why was the girl going forward instead of staying still? well because you were applying a force on to the girl and as a result she was accelerating in the direction of that force.</li>`;
+        } else if(factText.textContent == "Newton's first law of motion is when an object continues in a state of rest or uniform velocity (moving with constant velocity) unless it is acted upon by a (non-zero) net or resultant force.") {
+            exampleText.innerHTML = "<li>Imagine that you're late for work because you overslept so you get in your car and you drive as fast as you can, on the way you try to message your boss telling her that you're going to be late then before you're even able to send her a message you hit a motionless car and it then begins move but why did the car move you ask? Well because your car exerted a force on to the car causing it to move and that is Newton's first law of motion, you also got fired on your imaginary job BTW.</li>";
+        } else if(factText.textContent == "A non-conservative force is a force for which the work done in moving an object between two points depends on the path taken.") {
+          exampleText.innerHTML = "<li>It's like how in life when you work hard to get your money, you have like a million jobs, you treat everyone with respect and kindness, and you pray 24/7 but some girl who got out of prison for murder opens an only fans account and gets millions of dollars.</li>";
+        } else if(factText.textContent == "Frictional force due to a surface is the force that opposes the motion of an object and acts parallel to the surface with which the object is in contact."){
+            exampleText.innerHTML = `<li>Imagine you're having sex and your "manhood" is in your partners "garden" so your start enjoying it for a while but all of a sudden you remember this p*rn video where a guy put his "manhood" in a girls b**tyhole so you try to attempt it and guess what it actually gets in but your partners b**tyhole is griping hard, so hard that it's getting harder to move your "manhood" in your partners b**tyhole so she suggests some lubricant and guess what it works but why could't you move your "manhood" in your partners b**tyhole? well because due to your partners "surface" there was a force opposing the motion of your "manood". Now that's frictional force and oh yeah you need to break up with that girl coz she's for the STREETS!!!</li>`;
+        } else if(factText.textContent == "A conservative force is a force for which the work done in moving an object between two points is independent of the path taken.") {
+            exampleText.innerHTML = `<li>Like how it doesn't matter which path you decide to take because if you work hard enough your work will not go unnoticed so you better decide to be a hitman because someone just stole my left over sandwhich from the fridge, hit me up for your first customer.</li>`;
+        } else if(factText.textContent == "A catalyst is a substance that increases the rate of the reaction but remains unchanged at the end of the reaction.") {
+          exampleText.innerHTML = `<li>It's like waking up in a winter morning, too lazy or cold to get out of bed but you get up anyway and you make yourself a cup of tea to warm you up. so you boil water in a kettle, put some sugar, teabags and boiled water in a cup and you wait for the tea to simmer then you blow on to the tea trying to reduce the heat and after a few minutes you drink the tea but it tastes bitter so you pour more sugar only to come to the realization that you didn't stir the tea, so you fetch a spoon and you stir the tea then after stiring for a while you start drinking the tea and it tastes as sweet as a mf but why was the tea bitter before stiring it? well that's simple because the sugar had not completely reacted with the boiled water and if you hadn't stired that tea with a spoon the tea would have probably gone cold before the sugar would completely react hence why the spoon is the catalyst because it increased the rate of the reaction without changing itself, sorry this is so long lol.</li>`;
+        } else if(factText.textContent == "Le Chatelier's principle is 'When an external stress (change in pressure, temperature or concentration) is applied to a system in chemical equilibrium, the equilibrium point will changein such a way as to counteract the stress'.") {
+          exampleText.innerHTML = `Imagine you're at the mall with your husband and he stares at a woman passing by with big breasts so you see him then you yell resulting in conflict between the two of you, so much so to the point where he doesn't even want to sleep on the same bed with you anymore therefore leading you to feel bad so you take a trip for a few weeks alone and when you come back you surprise him with even bigger boobs to increase his sexual desires for you so that he doesn't look at other women at the mall and guess what it works, now you're having quickies at the mall and you're still married happily. Now that is Le Chatelier's priciple.`;
+        } else {
+            exampleText.textContent = "Sorry, no results to show.";
+          }
+      });
+
+      removeBtn.addEventListener('click', () => {
+        factWrapper1.classList.add('hide');
+        factWrapper.classList.remove('hide');
+      });
+      clearBtn.addEventListener('click', () => {
+        factWrapper2.classList.add('hide');
+        factWrapper.classList.remove('hide');
+      });
+
+      window.onload = () => {
+        setTimeout(() => {
+          alert('Please refresh before checking your inventory.');
+        }, 5000);
+        factWrapper1.classList.add('hide');
+        factWrapper2.classList.add('hide');
+        };
+
+    </script>
+  </body>
+</html>

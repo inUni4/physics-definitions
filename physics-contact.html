@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width-device-width, initial-scale=1.0" />
+    <style>
+      body{
+        font-family: Arial;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: bisque;
+        height: 100vh;
+      }
+      .fact-wrapper{
+        background-color: white;
+        width: 90%;
+        margin-top: 300px;
+        border-radius: 6px;
+        border: 2px solid bisque;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: all ease 0.3s;
+      }
+      .next-btn{
+        background-color: bisque;
+        width: 80%;
+        padding: 6px;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        font-size: 14px;
+        color: white;
+        cursor: pointer;
+        margin-bottom: 6px;
+        transition: all ease 0.3s;
+      }
+      .next-btn:active{
+        transform: scale(0.9);
+      }
+      .next-btn1{
+        background-color: bisque;
+        width: 80%;
+        padding: 6px;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        font-size: 14px;
+        color: white;
+        cursor: pointer;
+        margin-bottom: 6px;
+        transition: all ease 0.3s;
+      }
+      .next-btn1:active{
+        transform: scale(0.9);
+      }
+      .next-btn2{
+        background-color: bisque;
+        width: 80%;
+        padding: 6px;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        font-size: 14px;
+        color: white;
+        cursor: pointer;
+        margin-bottom: 6px;
+        transition: all ease 0.3s;
+      }
+      .next-btn1:active{
+        transform: scale(0.9);
+      }
+      .next-btn3{
+        background-color: bisque;
+        width: 80%;
+        padding: 6px;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        font-size: 14px;
+        color: white;
+        cursor: pointer;
+        margin-bottom: 6px;
+        transition: all ease 0.3s;
+      }
+      .next-btn1:active{
+        transform: scale(0.9);
+      }
+      .fact-text{
+        font-size: 14px;
+        font-weight: 500;
+        color: rgb(255, 202, 136);
+        text-align: center;
+        width: 80%;
+      }
+      .hide{
+        opacity: 0;
+        pointer-events: none;
+      }
+      .definitions{
+        color: rgb(255, 202, 136);
+        font-size: 12px;
+        font-weight: bold;
+        margin: 8px;
+      }
+      .header-wrapper{
+        width: 100%;
+        box-sizing: border-box;
+        height: 60px;
+        background-color: white;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: grid;
+        grid-template-columns: 70% 30%;
+        align-items: center;
+        justify-content: space-around;
+        z-index: 1;
+      }
+      .header-text{
+        font-size: 16px;
+        font-weight: bold;
+        color: bisque;
+        text-align: center;
+      }
+      li{
+        margin: 6px;
+        color: bisque;
+        font-size: 16px;
+        align-items: center;
+      }
+      .studio-image{
+        width: 40%;
+        border-radius: 6px;
+        align-items: center;
+      }
+      .studio-pic{
+        align-items: center;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <p class="header-text">Contact developer</p>
+    </div>
+    <div class="fact-wrapper">
+        <p class="studio-pic"></p>
+        <p class="fact-text">Welcome</p>
+        <button class="next-btn">1</button>
+        <button class="next-btn1">2</button>
+        <button class="next-btn2">3</button>
+        <button class="next-btn3">4</button>
+    </div>
+    <script>
+      const factText = document.querySelector('.fact-text');
+      const nextBtn = document.querySelector('.next-btn');
+      const nextBtn1 = document.querySelector('.next-btn1');
+      const nextBtn2 = document.querySelector('.next-btn2');
+      const nextBtn3 = document.querySelector('.next-btn3');
+      const factWrapper = document.querySelector('.fact-wrapper');
+      const studioPic = document.querySelector('.studio-pic');
+
+      const contact = [`<p>If you encounter any errors on the website hit me up on <a href="https://www.instagram.com/kim.m_malatji">IG</a>.</p>`, `If you have any ideas for the website you can hit me up on <a href="https://www.instagram.com/kim.m_malatji">IG</a>.`, `Property of Breaking studios.`, `Developed by Breaking studios.`];
+
+      nextBtn.addEventListener('click', () => {
+        studioPic.innerHTML = "";
+        factText.innerHTML = contact[0];
+      });
+      nextBtn1.addEventListener('click', () => {
+        studioPic.innerHTML = "";
+        factText.innerHTML = contact[1];
+      });
+      nextBtn2.addEventListener('click', () => {
+        studioPic.innerHTML = `<img src="A876237A-D55A-428F-A8FE-C5CDA596F5DA.jpeg" class="studio-image">`;
+        factText.innerHTML = contact[2];
+      });
+      nextBtn3.addEventListener('click', () => {
+        studioPic.innerHTML = `<img src="A876237A-D55A-428F-A8FE-C5CDA596F5DA.jpeg" class="studio-image">`;
+        factText.innerHTML = contact[3];
+      });
+
+    </script>
+  </body>
+</html>

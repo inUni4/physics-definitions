@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width-device-width, initial-scale=1.0" />
+    <style>
+      body{
+        font-family: Arial;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .header-wrapper{
+        width: 100%;
+        box-sizing: border-box;
+        height: 60px;
+        background-color: bisque;
+        padding: 6px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        align-items: center;
+        justify-content: space-around;
+        z-index: 1;
+      }
+      .header-text{
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        text-align: center;
+      }
+      .question-text{
+        font-size: 14px;
+        font-weight: 500;
+        color: bisque;
+        text-align: center;
+      }
+      .answer-text{
+        font-size: 14px;
+        font-weight: 500;
+        color: bisque;
+        text-align: center;
+        margin: 6px;
+      }
+      .answer-text1{
+        font-size: 14px;
+        font-weight: 500;
+        color: bisque;
+        text-align: center;
+        margin: 6px;
+      }
+      .answer-text2{
+        font-size: 14px;
+        font-weight: 500;
+        color: bisque;
+        text-align: center;
+        margin: 6px;
+      }
+      .answer-text3{
+        font-size: 14px;
+        font-weight: 500;
+        color: bisque;
+        text-align: center;
+        margin: 6px;
+      }
+      .right-text{
+        font-size: 14px;
+        font-weight: 500;
+        color: bisque;
+        text-align: center;
+        margin: 6px;
+      }
+      .question-wrapper{
+        width: 100%;
+        box-sizing: border-box;
+        background-color: white;
+        border: 1px solid bisque;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        transition: all ease 0.3s;
+        padding: 6px;
+        margin-top: 6px;
+      }
+      .answer-wrapper{
+        width: 60%;
+        display: grid;
+        grid-template-columns: 40% 60%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px;
+      }
+      button{
+        width: 60%;
+        font-size: 12px;
+        font-weight: bold;
+        background-color: bisque;
+        color: white;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        padding: 6px;
+        transition: all ease 0.3s;
+      }
+      button:active{
+        transform: scale(0.9);
+      }
+      .hide{
+        opacity: 0;
+        pointer-events: none;
+      }
+      .score-text{
+        color: bisque;
+        font-size: 12px;
+        font-weight: 500;
+      }
+      .all-wrapper{
+        display: flex;
+        flex-direction: column;
+        width: 98%;
+        margin-top: 400px;
+      }
+      .home-page-pic{
+        width: 40%;
+        border-radius: 80%;
+      }
+      .myself-wrapper{
+        display: grid;
+        margin: 6px 0;
+        grid-template-columns: 35% 65%;
+        border-radius: 6px;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        background-color: bisque;
+        padding: 6px;
+        box-sizing: border-box;
+        transition: all ease 0.3s;
+      }
+      .my-ig{
+        width: 50%;
+      }
+      .ig-text{
+        font-size: 12px;
+        font-weight: bold;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <p class="header-text">Physics Definitions</p>
+    </div>
+    <div  class="all-wrapper">
+      <div class="question-wrapper">
+        <img src="FB_IMG_16886826129753649.jpg" class="home-page-pic">
+      </div>
+
+      <a href="/work-projects/physics-definitions.html">
+        <div class="question-wrapper">
+          <p class="question-text">Learn more</p>
+        </div>
+      </a>
+
+      <a href="/work-projects/physics-test.html">
+        <div class="question-wrapper">
+          <p class="question-text">Test yourself</p>
+        </div>
+      </a>
+
+      <a href="/work-projects/physics-contact.html">
+        <div class="question-wrapper">
+          <p class="question-text">Contact me!</p>
+        </div>
+      </a>
+
+    </div>
+    <script>
+      const questionText = document.querySelector('.question-text');
+
+    </script>
+  </body>
+</html>

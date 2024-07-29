@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width-device-width, initial-scale=1.0" />
+    <style>
+      body{
+        font-family: Arial;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .header-wrapper{
+        width: 100%;
+        box-sizing: border-box;
+        height: 60px;
+        background-color: bisque;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        align-items: center;
+        justify-content: space-around;
+        z-index: 1;
+      }
+      .header-text{
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        text-align: center;
+      }
+      .question-text{
+        font-size: 14px;
+        font-weight: 500;
+        color: bisque;
+        text-align: center;
+      }
+      .answer-text{
+        font-size: 14px;
+        font-weight: 500;
+        color: bisque;
+        text-align: center;
+        margin: 6px;
+      }
+      .answer-text1{
+        font-size: 14px;
+        font-weight: 500;
+        color: bisque;
+        text-align: center;
+        margin: 6px;
+      }
+      .answer-text2{
+        font-size: 14px;
+        font-weight: 500;
+        color: bisque;
+        text-align: center;
+        margin: 6px;
+      }
+      .answer-text3{
+        font-size: 14px;
+        font-weight: 500;
+        color: bisque;
+        text-align: center;
+        margin: 6px;
+      }
+      .right-text{
+        font-size: 14px;
+        font-weight: 500;
+        color: bisque;
+        text-align: center;
+        margin: 6px;
+      }
+      .question-wrapper{
+        width: 100%;
+        box-sizing: border-box;
+        background-color: white;
+        border: 1px solid bisque;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        transition: all ease 0.3s;
+      }
+      .answer-wrapper{
+        width: 60%;
+        display: grid;
+        grid-template-columns: 40% 60%;
+        justify-content: space-between;
+        align-items: center;
+      }
+      button{
+        width: 60%;
+        font-size: 12px;
+        font-weight: bold;
+        background-color: bisque;
+        color: white;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        transition: all ease 0.3s;
+      }
+      button:active{
+        transform: scale(0.9);
+      }
+      .hide{
+        opacity: 0;
+        pointer-events: none;
+      }
+      .score-text{
+        color: bisque;
+        font-size: 12px;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <p class="header-text">Physics Definitions</p>
+    </div>
+    <div class="question-wrapper">
+      <p class="question-text">Reactions which transfer potential energy into thermal energy.</p>
+      <div class="answer-wrapper">
+        <button class="box-a">A</button>
+        <p class="answer-text">Heat of reaction</p>
+      </div>
+
+      <div class="answer-wrapper">
+        <button class="box-b">B</button>
+        <p class="answer-text1">Endothermic</p>
+      </div>
+
+      <div class="answer-wrapper">
+        <button class="box-c">C</button>
+        <p class="answer-text2">Exothermic</p>
+      </div>
+
+      <div class="answer-wrapper">
+        <button class="box-d">D</button>
+        <p class="answer-text3">Reaction rate</p>
+      </div>
+      <p class="right-text"></p>
+      <p class="score-text"></p>
+    </div>
+    <script>
+      const questionText = document.querySelector('.question-text');
+      const answerText = document.querySelector('.answer-text');
+      const answerText1 = document.querySelector('.answer-text1');
+      const answerText2 = document.querySelector('.answer-text2');
+      const answerText3 = document.querySelector('.answer-text3');
+      const rightText = document.querySelector('.right-text');
+      const scoreText = document.querySelector('.score-text');
+      const boxA = document.querySelector('.box-a');
+      const boxB = document.querySelector('.box-b');
+      const boxC = document.querySelector('.box-c');
+      const boxD = document.querySelector('.box-d');
+
+      let score = 0;
+      let answeredQuestions = 0;
+      function hideBtns() {
+        boxA.classList.add('hide');
+        boxB.classList.add('hide');
+        boxC.classList.add('hide');
+        boxD.classList.add('hide');
+      };
+      function hideText() {
+        answerText.textContent = "";
+        answerText1.textContent = "";
+        answerText2.textContent = "";
+        answerText3.textContent = "";
+        if(score >= 2) {
+            questionText.textContent = "Congratulations you managed to score over 50% you pass!";
+          } else{
+            questionText.textContent = "Unfortunately you were unable to score over 50% so you fail.";
+          };
+      };
+
+      boxC.addEventListener('click', () => {
+        if(answeredQuestions >= 4) {
+          hideText();
+          hideBtns();
+        } else {
+          if(questionText.textContent == "Reactions which transfer potential energy into thermal energy."){
+            score = score + 1;
+            answeredQuestions = answeredQuestions + 1;
+            rightText.textContent = "Your answer was correct.";
+            questionText.textContent = "Reactions which transfer thermal energy into potential energy.";
+            answerText.textContent = "Catalyst";
+            answerText1.textContent = "Endothermic";
+            answerText2.textContent = "Galvanic";
+            answerText3.textContent = "Exothermic";
+            scoreText.textContent = `Questions answered ${answeredQuestions}/4`;
+          } else {
+              answeredQuestions = answeredQuestions + 1;
+              rightText.textContent = "Sorry but your answer was incorrect.";
+              questionText.textContent = "Reactions which transfer thermal energy into potential energy.";
+            answerText.textContent = "Catalyst";
+            answerText1.textContent = "Endothermic";
+            answerText2.textContent = "Galvanic";
+            answerText3.textContent = "Exothermic";
+              scoreText.textContent = `Questions answered ${answeredQuestions}/4`;
+            }
+          }
+        });
+
+      boxB.addEventListener('click', () => {
+        if(answeredQuestions >= 4) {
+          hideText();
+          hideBtns();
+        } else {
+            if(questionText.textContent == "Reactions which transfer thermal energy into potential energy."){
+              score = score + 1;
+              answeredQuestions = answeredQuestions + 1;
+              rightText.textContent = "Your answer was correct.";
+              questionText.textContent = "The change in concentration per unit time of either a reactant or product.";
+              answerText.textContent = "Reaction rate";
+              answerText1.textContent = "Endothermic";
+              answerText2.textContent = "Exothermic";
+              answerText3.textContent = "Activated complex";
+              scoreText.textContent = `Questions answered ${answeredQuestions}/4`;
+            } else {
+                answeredQuestions = answeredQuestions + 1;
+                rightText.textContent = "Sorry but your answer was incorrect.";
+                questionText.textContent = "The change in concentration per unit time of either a reactant or product.";
+                answerText.textContent = "Reaction rate";
+                answerText1.textContent = "Endothermic";
+                answerText2.textContent = "Exothermic";
+                answerText3.textContent = "Activated complex";
+                scoreText.textContent = `Questions answered ${answeredQuestions}/4`;
+              }
+          }
+          
+      });
+
+      boxA.addEventListener('click', () => {
+
+      if(answeredQuestions >= 4) {
+        hideText();
+        hideBtns();
+      } else {
+          if(questionText.textContent == "The change in concentration per unit time of either a reactant or product."){
+            score = score + 1;
+            answeredQuestions = answeredQuestions + 1;
+            rightText.textContent = "Your answer was correct.";
+            questionText.textContent = "The minimum energy required to start a chemical reaction.";
+            answerText.textContent = "Activated complex";
+            answerText1.textContent = "Potential energy";
+            answerText2.textContent = "Kinetic energy";
+            answerText3.textContent = "Activation energy";
+            scoreText.textContent = `Questions answered ${answeredQuestions}/4`;
+          } else {
+              answeredQuestions = answeredQuestions + 1;
+              questionText.textContent = "The minimum energy required to start a chemical reaction.";
+              answerText.textContent = "Activated complex";
+              answerText1.textContent = "Potential energy";
+              answerText2.textContent = "Kinetic energy";
+              answerText3.textContent = "Activation energy";
+              scoreText.textContent = `Questions answered ${answeredQuestions}/4`;
+            }
+        }
+      });
+
+      boxD.addEventListener('click', () => {
+
+        if(answeredQuestions >= 4) {
+          hideText();
+          hideBtns();
+        } else {
+            if(questionText.textContent == "The minimum energy required to start a chemical reaction."){
+              score = score + 1;
+              answeredQuestions = answeredQuestions + 1;
+              rightText.textContent = "Your answer was correct.";
+              questionText.textContent = "An unstable transition state between the reactants and the products.";
+              answerText.textContent = "Chemical equilibrium";
+              answerText1.textContent = "Catalyst";
+              answerText2.textContent = "Activation energy";
+              answerText3.textContent = "Activated complex";
+              scoreText.textContent = `Questions answered ${answeredQuestions}/4`;
+            } else if(questionText.textContent == "An unstable transition state between the reactants and the products.") {
+                score = score + 1;
+                answeredQuestions = answeredQuestions + 1;
+                rightText.textContent = "Your answer was correct.";
+                questionText.textContent = "Who is the greatest music artist of the century.";
+                answerText.textContent = "Drake";
+                answerText1.textContent = "The Weeknd";
+                answerText2.textContent = "J.Cole";
+                answerText3.textContent = "Kanye West";
+                scoreText.textContent = `Questions answered ${answeredQuestions}/4`;
+              } else {
+                  answeredQuestions = answeredQuestions + 1;
+                  rightText.textContent = "Sorry but your answer was incorrect.";
+                  questionText.textContent = "An unstable transition state between the reactants and the products.";
+                  answerText.textContent = "Chemical equilibrium";
+                  answerText1.textContent = "Catalyst";
+                  answerText2.textContent = "Activation energy";
+                  answerText3.textContent = "Activated complex";
+                  scoreText.textContent = `Questions answered ${answeredQuestions}/4`;
+                }
+            }
+          
+      });
+
+    </script>
+  </body>
+</html>
